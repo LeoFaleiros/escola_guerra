@@ -1,4 +1,3 @@
-
 async function carregarAlerta() {
     try {
         const [histRes, tempoRes] = await Promise.all([
@@ -8,11 +7,12 @@ async function carregarAlerta() {
 
         const historicoData = await histRes.json();
         const tempoData = await tempoRes.json();
-        const horarioUTC = new Date(tempoData.data.time);
-        const horarioBrasilia = new Date(horarioUTC.getTime() - 3 * 60 * 60 * 1000);
-        const horaFormatada = horarioBrasilia.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' });
 
         const weather = tempoData.data.values;
+        const horaUTC = new Date(tempoData.data.time);
+        const horaBrasilia = new Date(horaUTC.getTime() - 3 * 60 * 60 * 1000);
+        const horaFormatada = horaBrasilia.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
         const chuva = weather.precipitationIntensity;
         const clima = weather.weatherCode;
         const temperatura = weather.temperature;
@@ -22,7 +22,7 @@ async function carregarAlerta() {
         const motivoEl = document.getElementById('motivo');
         const tempoEl = document.getElementById('tempo');
 
-        let mensagemClima = `Clima atual: ${mapearCodigoClima(clima)} | Temp: ${temperatura}°C | Umidade: ${umidadeAtual}%`;
+        let mensagemClima = `Clima atual: ${mapearCodigoClima(clima)} | Temp: ${temperatura}°C | Umidade: ${umidadeAtual}% | Atualizado às ${horaFormatada}`;
         tempoEl.textContent = mensagemClima;
 
         const condicoesCriticas = chuva > 0.5 || umidadeAtual < 30;
