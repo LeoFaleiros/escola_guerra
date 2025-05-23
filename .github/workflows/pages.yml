@@ -1,0 +1,25 @@
+
+name: Deploy para GitHub Pages com chave oculta
+
+on:
+  push:
+    branches:
+      - main  # ou master, conforme sua branch principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: Injetar chave no config.js
+        run: |
+          echo "const apiKey = '${{ secrets.TOMORROW_API_KEY }}';" > docs/config.js
+
+      - name: Publicar no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
