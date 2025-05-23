@@ -8,6 +8,9 @@ async function carregarAlerta() {
 
         const historicoData = await histRes.json();
         const tempoData = await tempoRes.json();
+        const horarioUTC = new Date(tempoData.data.time);
+        const horarioBrasilia = new Date(horarioUTC.getTime() - 3 * 60 * 60 * 1000);
+        const horaFormatada = horarioBrasilia.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' });
 
         const weather = tempoData.data.values;
         const chuva = weather.precipitationIntensity;
