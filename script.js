@@ -51,3 +51,4 @@ async function carregarAlerta() {
 carregarAlerta();
 // trigger deploy
 // trigger
+// tentativa limpa
