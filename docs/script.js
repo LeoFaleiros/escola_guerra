@@ -10,8 +10,12 @@ async function carregarAlerta() {
 
         const weather = tempoData.data.values;
         const horaUTC = new Date(tempoData.data.time);
-        const horaBrasilia = new Date(horaUTC.getTime() - 3 * 60 * 60 * 1000);
-        const horaFormatada = horaBrasilia.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        const horaFormatada = horaUTC.toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        hour: '2-digit',
+        minute: '2-digit'
+        });
+
 
         const chuva = weather.precipitationIntensity;
         const clima = weather.weatherCode;
