@@ -1,28 +1,31 @@
+# Sistema de Alerta para Aulas - Escola de Futebol
 
-# Alerta de Aulas - Escola de Futebol
+Este projeto tem como objetivo facilitar a comunicação entre a coordenação da escola de futebol e os pais/responsáveis dos alunos, informando de forma clara se as aulas ocorrerão normalmente ou serão suspensas por motivos climáticos.
 
-Este projeto é uma aplicação leve hospedável via GitHub Pages que informa pais e responsáveis sobre o status das aulas com base em condições climáticas (ex: umidade do ar) e motivos manuais da coordenação.
+## O que o sistema faz
 
-## 📁 Estrutura
+- Consulta em tempo real as condições do tempo na cidade de Penápolis-SP.
+- Avalia automaticamente a umidade e chuva para decidir se a aula será cancelada.
+- Exibe uma mensagem clara na tela: "Hoje não haverá aula" ou "Aula normal".
+- Mostra também o clima atual (ex: Céu limpo, Chuva forte).
+- Traz um histórico de decisões anteriores da coordenação.
 
-```
-├── src/
-│   ├── index.html
-│   ├── script.js
-│   └── status.json
-├── README.md
-```
+## 🛠️ Tecnologias utilizadas
 
-## 🚀 Publicação
+- **JavaScript** para lógica do sistema e chamadas à API.
+- **HTML e CSS** para estrutura e visual da página.
+- **API da Tomorrow.io** para dados climáticos em tempo real.
+- **GitHub Pages** para hospedagem do site.
+- **GitHub Actions** para automatizar o deploy e injetar a chave da API com segurança.
 
-Para publicar no GitHub Pages:
-1. Faça push desse projeto para um repositório.
-2. Acesse **Settings > Pages** e selecione a branch e a pasta `/src` como fonte.
-3. O site será disponibilizado em `https://<seu-usuario>.github.io/<repositorio>/`.
+## 💡 Como usar
 
-## ✅ Funcionalidades
+1. Acesse o site publicado via GitHub Pages.
+2. A página será carregada automaticamente com os dados atuais do clima.
+3. Se as condições forem desfavoráveis, será exibido um aviso de suspensão da aula.
+4. Abaixo, os pais podem consultar o histórico de alertas anteriores.
 
-- Mensagem dinâmica sobre aula com base na umidade.
-- Motivo personalizado configurado pela coordenação.
-- Interface responsiva e acessível.
-# escola_guerra
+## 🚀 Próximos passos
+
+Este é o primeiro módulo do projeto. 
+O segundo módulo integrará os serviços da AWS para enviar mensagens automáticas aos pais em caso de cancelamento das aulas por motivos climáticos.
