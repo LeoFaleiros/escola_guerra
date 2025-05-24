@@ -44,6 +44,8 @@ Este módulo complementa o alerta visual com um sistema automatizado de mensagen
 ### Tecnologias utilizadas
 
 - **Python** – utilizado para a lógica de processamento e envio das notificações.
+- **Amazon Kinesis** – canal de eventos em tempo real para transmissão de dados meteorológicos entre funções.
 - **AWS Lambda** – executa automaticamente o código sem necessidade de servidor.
 - **Amazon SNS** – serviço responsável pelo envio das mensagens.
 - **Amazon CloudWatch** – agenda e monitora as execuções da função Lambda.
+- **Amazon DynamoDB** – banco de dados NoSQL utilizado para armazenar o histórico de alertas e decisões de cancelamento.
